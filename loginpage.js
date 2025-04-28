@@ -41,7 +41,7 @@ signinBox.addEventListener('click', (e) => {
 });
 
 
-//selecting login data and storing in local storage
+// Selecting login data and storing in local storage
 
 const signupUsername = document.getElementById('signup-username');
 const signupEmail = document.getElementById('signup-email');
@@ -49,62 +49,64 @@ const signupPassword = document.getElementById('signup-password');
 const signupButton = document.querySelector('.signup-button');
 const display = document.querySelector('.display');
 
-let userData = [];
-const saveddataget = JSON.parse(localStorage.getItem('userData'));
+// Initialize userData array from localStorage or as an empty array
+let userData = JSON.parse(localStorage.getItem('userData')) || [];
 
-// try{
-//     const savedData = localStorage.getItem('userData');
-//     userData = JSON.parse(savedData);
-
-//     if (!userData || typeof userData !== 'object') {
-//         throw new Error('Invalid userData');
-//     }
-// } catch (error) {
-//     // Reset localStorage and initialize userData with default values
-//     userData = {
-//         Username: '',
-//         Email: '',
-//         Password: '',
-//     };
-//     localStorage.removeItem('userData');
-//     console.error('Error parsing userData from localStorage:', error);
-// }
+// Event listener for the signup button
 signupButton.addEventListener('click', () => {
-    const signupUsernameValue = signupUsername.value;
-    const signupEmailValue = signupEmail.value;
-    const signupPasswordValue = signupPassword.value;
-    for(let i=0;i<userData.length;i++){
-        const {Username, Email, Password} = userData[i];
-        return Username, Email, Password;
+    const signupUsernameValue = signupUsername.value.trim();
+    const signupEmailValue = signupEmail.value.trim();
+    const signupPasswordValue = signupPassword.value.trim();
+
+    // Validate input fields
+    if (!signupUsernameValue || !signupEmailValue || !signupPasswordValue) {
+        alert('All fields are required!');
+        return;
     }
 
-    // userData.Username += signupUsernameValue;
-    // userData.Email += signupEmailValue;
-    // userData.Password += signupPasswordValue;
+    // Check if the email is already registered
+    const isEmailRegistered = userData.some(user => user.Email === signupEmailValue);
+    if (isEmailRegistered) {
+        alert('This email is already registered!');
+        return;
+    }
 
-    userData.push({Username:signupUsernameValue, Email:signupEmailValue,Password:signupPasswordValue});
+    // Add new user data to the array
+    userData.push({
+        Username: signupUsernameValue,
+        Email: signupEmailValue,
+        Password: signupPasswordValue
+    });
 
-    // localStorage.setItem('userData', JSON.stringify(userData));
+    // Save updated userData array to localStorage
     localStorage.setItem('userData', JSON.stringify(userData));
 
-    console.log(saveddataget);
+    // Clear input fields
+    signupUsername.value = '';
+    signupEmail.value = '';
+    signupPassword.value = '';
+
+    alert('Sign-up successful!');
+    console.log('Updated userData:', userData);
 });
 
-// selecting sign in inputs
-const signinUsername = document.getElementById('signin-username');
-const signinPassword = document.getElementById('signin-password');
+const signinEmail = document.getElementById('signin-email');
+const signinpassword = document.getElementById('signin-password');
 const signinButton = document.querySelector('.signin-button');
 
-// console.log(localStorage);
-
 signinButton.addEventListener('click', () => {
-    const signinUsernameValue = signinUsername.value;
-    const signinPasswordValue = signinPassword.value;
-    if(userData.Username === signinUsernameValue && userData.Password === signinPasswordValue){
-        console.log(signinUsernameValue);
+    const signinEmailValue = signinEmail.value.trim();
+    const signinPasswordValue = signinpassword.value.trim();
+
+    // Check if the email and password match any user in the userData array
+    const isValidUser = userData.some(user => 
+        user.Email === signinEmailValue && user.Password === signinPasswordValue
+    );
+
+    if (isValidUser) {
+        console.log("Yoo what's up!");
+    } else {
+        console.log("Invalid email or password");
     }
-    else{
-        console.log('Username or password is incorrect');
-    }
+    signinBox.style.display = 'none';
 });
-// console.log(saveddataget)
