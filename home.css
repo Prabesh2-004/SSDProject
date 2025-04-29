@@ -1,62 +1,154 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-*{
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
-body{
-    font-family: poppins,'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-.container{
-    display: flex;
-    width: 15%;
-    border-right: 1px solid gray;
-    flex-direction: column;
-    align-items: flex-start;
-    height: 100vh;
-    background-color: rgb(0, 0, 0);
-}
-.logo{
-    margin: 20px;
-    color: white;
-}
-.link-container {
-    list-style: none;
-    width: 95%;
-    height: 80%;
-}
-.link-container li{
-    margin-left: 20px;
-    border-radius: 10px;
-    padding: 15px 0 15px 5px;
-    cursor: pointer;
 
-    &:hover{
-        border: 2px solid gray;
-    }
+body {
+    font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #fafafa;
+    color: #262626;
 }
-.link-container li a{
-    text-decoration: none;
-    color: white;
-    font-weight: 500;
-    font-style: oblique;
+
+.sidebar-container {
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    height: 100vh;
+    background-color: #fff;
+    border-right: 1px solid #dbdbdb;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 20px;
 }
-.more{
-    width: 95%;
+
+.logo {
+    margin-bottom: 30px;
+    font-size: 24px;
+    font-weight: 700;
+    color: #262626;
+    text-align: center;
 }
-.more li{
-    border-radius: 10px;
-    padding: 15px 0 15px 5px;
+
+.link-container,
+.more {
     list-style: none;
-    margin-left: 20px;
-    cursor: pointer;
-    &:hover{
-        border: 2px solid gray;
-    }
+    width: 100%;
 }
-.more li a{
+
+.link-container li,
+.more li {
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.link-container li:hover,
+.more li:hover {
+    background-color: #f0f0f0;
+}
+
+.link-container li a,
+.more li a {
     text-decoration: none;
-    color: white;
-    font-style: oblique;
+    color: #262626;
     font-weight: 500;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.body-container {
+    display: flex;
+    flex-direction: row; /* Two-column layout */
+    margin-left: 20%; /* Leave space for the sidebar */
+    padding: 20px;
+    gap: 20px;
+}
+
+.main-feed {
+    flex: 3; /* Main feed takes up more space */
+    display: flex;
+    flex-direction: column; /* Stack feed items vertically */
+    gap: 20px; /* Add spacing between feed items */
+}
+
+.main-section {
+    width: 100%; /* Ensure full width for each feed item */
+    background-color: #fff;
+    border: 1px solid #dbdbdb;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column; /* Stack content vertically inside each section */
+    align-items: center; /* Center align images and content */
+}
+
+.main-section img {
+    max-width: 100%; /* Ensure images are responsive */
+    height: auto;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+.expression {
+    display: flex;
+    width: 100%;
+    justify-content: space-between; /* Space out icons */
+    margin-top: 10px;
+}
+
+.expression img {
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.expression img:hover {
+    transform: scale(1.1); /* Slight zoom effect on hover */
+}
+
+.suggestion-box {
+    flex: 1; /* Suggestion box takes up less space */
+    background-color: #fff;
+    border: 1px solid #dbdbdb;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    height: fit-content; /* Adjust height to fit content */
+    position: sticky; /* Keep it fixed while scrolling */
+    top: 20px; /* Add spacing from the top */
+}
+
+.suggestion-box h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.suggestion-box p {
+    font-size: 14px;
+    color: #8e8e8e;
+    text-align: center;
+}
+
+.image-container {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
 }
