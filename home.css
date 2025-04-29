@@ -47,12 +47,45 @@ body {
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
-
+.like-count{
+    margin-right: auto;
+}
+.uploaded-username{
+    margin-right: auto;
+}
+.userid-more{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+.userid-more img{
+    height: 25px;
+    cursor: pointer;
+}
 .link-container li:hover,
 .more li:hover {
     background-color: #f0f0f0;
 }
-
+.upload-button{
+    padding: 10px;
+    width: 100px;
+    cursor: pointer;
+    background-color: red;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: white;
+    font-weight: 800;
+    border-radius: 30px;
+    border: none;
+    margin-top: 15px;
+}
+.slider-1{
+    height: 50px;
+    background-color: gray;
+    border-radius: 10px;
+    width: 100%;
+}
 .link-container li a,
 .more li a {
     text-decoration: none;
@@ -126,19 +159,6 @@ body {
     top: 20px; /* Add spacing from the top */
 }
 
-.suggestion-box h3 {
-    font-size: 18px;
-    font-weight: 600;
-    margin-bottom: 10px;
-    text-align: center;
-}
-
-.suggestion-box p {
-    font-size: 14px;
-    color: #8e8e8e;
-    text-align: center;
-}
-
 .image-container {
     width: 100%;
     height: auto;
@@ -151,4 +171,15 @@ body {
     max-width: 100%;
     height: auto;
     border-radius: 12px;
+}
+.uploading-section{
+    flex: 0; /* Suggestion box takes up less space */
+    background-color: #fff;
+    border: 1px solid #dbdbdb;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    height: fit-content; /* Adjust height to fit content */
+    position: sticky; /* Keep it fixed while scrolling */
+    top: 20px; /* Add spacing from the top */
 }

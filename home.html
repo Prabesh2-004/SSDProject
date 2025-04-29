@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
     <link rel="stylesheet" href="home.css">
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <!-- <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script> -->
 </head>
 <body>
     <sidebar>
@@ -16,7 +16,7 @@
             <div class="link-container">
                 <li><a href="#"><i class="fas fa-home"></i> Home</a></li>
                 <li><a href="#"><i class="fas fa-search"></i> Search</a></li>
-                <li><a href="#"><i class="fas fa-compass"></i> Explore</a></li>
+                <li><a href="#"><i class="fas fa-compass"></i> Create</a></li>
                 <li><a href="#"><i class="fas fa-video"></i> Reels</a></li>
                 <li><a href="#"><i class="fas fa-envelope"></i> Message</a></li>
                 <li><a href="#"><i class="fas fa-heart"></i> Notifications</a></li>
@@ -32,80 +32,20 @@
         <div class="body-container">
             <!-- Main Feed -->
             <div class="main-feed">
-                <div class="main-section">
-                    <!-- <h2>Main Feed</h2> -->
-                    <div class="image-container">
-                        <img src="img/download (1).jpeg" alt="">
-                    </div>
-                    <div class="expression">
-                        <div>
-                            <img src="icons/favorite_24dp_000000_FILL0_wght400_GRAD0_opsz24.png" alt="">
-                            <img src="icons/comment_24dp_000000_FILL0_wght400_GRAD0_opsz24.png" alt="">
-                            <img src="icons/send_24dp_000000_FILL0_wght400_GRAD0_opsz24.png" alt="">
-                        </div>
-                        <div class="bookmark-slot">
-                            <img src="icons/bookmark_24dp_000000_FILL0_wght400_GRAD0_opsz24.png" alt="" class="bookmark">
-                            <img src="icons/bookmarks_24dp_000000_FILL0_wght400_GRAD0_opsz24.png" alt="" class="bookmarked-js" style="display: none;">
-                        </div>
-                    </div>
-                </div>
-                <div class="main-section">
-                    <!-- <h2>Main Feed</h2> -->
-                    <div class="image-container">
-                        <img src="img/Frieren/Frieren_ Beyond Journey's End.jpeg" alt="">
-                    </div>
-                    <div class="expression">
-                        <div>
-                            <img src="icons/favorite_24dp_000000_FILL0_wght400_GRAD0_opsz24.png" alt="">
-                            <img src="icons/comment_24dp_000000_FILL0_wght400_GRAD0_opsz24.png" alt="">
-                            <img src="icons/send_24dp_000000_FILL0_wght400_GRAD0_opsz24.png" alt="">
-                        </div>
-                        <div class="bookmark-slot">
-                            <img src="icons/bookmark_24dp_000000_FILL0_wght400_GRAD0_opsz24.png" alt="" class="bookmark">
-                            <img src="icons/bookmarks_24dp_000000_FILL0_wght400_GRAD0_opsz24.png" alt="" class="bookmarked-js" style="display: none;">
-                        </div>
-                    </div>
-                </div>
-                <div class="main-section">
-                    <!-- <h2>Main Feed</h2> -->
-                    <div class="image-container">
-                        <img src="img/Frieren/Original.jpeg" alt="">
-                    </div>
-                    <div class="expression">
-                        <div>
-                            <img src="icons/favorite_24dp_000000_FILL0_wght400_GRAD0_opsz24.png" alt="">
-                            <img src="icons/comment_24dp_000000_FILL0_wght400_GRAD0_opsz24.png" alt="">
-                            <img src="icons/send_24dp_000000_FILL0_wght400_GRAD0_opsz24.png" alt="">
-                        </div>
-                        <div class="bookmark-slot">
-                            <img src="icons/bookmark_24dp_000000_FILL0_wght400_GRAD0_opsz24.png" alt="" class="bookmark">
-                            <img src="icons/bookmarks_24dp_000000_FILL0_wght400_GRAD0_opsz24.png" alt="" class="bookmarked-js" style="display: none;">
-                        </div>
-                    </div>
-                </div>
-                <div class="main-section">
-                    <!-- <h2>Main Feed</h2> -->
-                    <div class="image-container">
-                        <img src="img/Frieren/download.jpg" alt="">
-                    </div>
-                    <div class="expression">
-                        <div>
-                            <img src="icons/favorite_24dp_000000_FILL0_wght400_GRAD0_opsz24.png" alt="">
-                            <img src="icons/comment_24dp_000000_FILL0_wght400_GRAD0_opsz24.png" alt="">
-                            <img src="icons/send_24dp_000000_FILL0_wght400_GRAD0_opsz24.png" alt="">
-                        </div>
-                        <div class="bookmark-slot">
-                            <img src="icons/bookmark_24dp_000000_FILL0_wght400_GRAD0_opsz24.png" alt="" class="bookmark">
-                            <img src="icons/bookmarks_24dp_000000_FILL0_wght400_GRAD0_opsz24.png" alt="" class="bookmarked-js" style="display: none;">
-                        </div>
-                    </div>
-                </div>
+                
             </div>
 
             <!-- Suggestion Box -->
             <div class="suggestion-box">
-                <h3>Suggestions</h3>
-                <p>Suggested profiles go here...</p>
+                <div class="top-section-upload">
+                    <div>
+                        <div class="slider-1"></div>
+                    </div>
+                    <button class="upload-button">Upload <img src="icons/add_circle_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.png" alt=""></button>
+                </div>
+                <div class="uploading-details">
+                    <input type="file" name="image" id="image" accept="image/*">
+                </div>
             </div>
         </div>
     </main>

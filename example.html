@@ -1,11 +1,73 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!-- <div class="image-upload-container">
+    <input type="file" id="image-upload" accept="image/*" style="display: none;">
+    <label for="image-upload" class="upload-button">Choose Image</label>
+    
+    <div class="image-preview">
+      <img id="preview" src="#" alt="Image Preview" style="display: none;">
+      <p id="no-image-text">No image selected</p>
+    </div>
+    
+    <button id="upload-button" disabled>Upload Image</button>
+  </div>
+  
+  <script>
+    const imageUpload = document.getElementById('image-upload');
+    const preview = document.getElementById('preview');
+    const noImageText = document.getElementById('no-image-text');
+    const uploadButton = document.getElementById('upload-button');
+  
+    imageUpload.addEventListener('change', function(e) {
+      const file = e.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        
+        reader.onload = function(event) {
+          preview.src = event.target.result;
+          preview.style.display = 'block';
+          noImageText.style.display = 'none';
+          uploadButton.disabled = false;
+        }
+        
+        reader.readAsDataURL(file);
+      }
+    });
+  </script> -->
+
+
+
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-</head>
-<body>
-    <script src="exampple.js"></script>
-</body>
-</html>
+  </head>
+  <body>
+    <input type="file" name="image" id="image" accept="image/*">
+    <img src="#" alt="" class="preview">
+
+    
+    <script>
+        const fileupload = document.querySelector('#image');
+        const button = document.querySelector('button');
+        const preview = document.querySelector('.preview');
+
+            const fileUploaded = fileupload.value;
+            fileupload.addEventListener('change', function(e) {
+                const fileName = e.target.files[0];
+
+                if(fileName){
+                    const reader = new FileReader();
+
+                    reader.onload = function(event){
+                        preview.src = event.target.result;
+                        preview.style.display = 'block';
+                    }
+                    reader.readAsDataURL(fileName)
+                }
+                console.log(fileName);
+
+            });
+    </script>
+  </body>
+  </html>
