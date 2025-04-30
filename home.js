@@ -194,7 +194,7 @@
 
 
 
-const mainFeedPage = [{
+let mainFeedPage = JSON.parse (localStorage.getItem('mainFeedPage')) || [{
   imageName: 'img/Frieren/download.jpeg',
   Username: 'Himel',
   Discription: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia inventore hic quis officiis unde voluptatem illo tenetur harum, velit dolore ipsa! Officiis rem saepe deserunt ducimus voluptas impedit, unde sed.'
@@ -407,6 +407,8 @@ document.addEventListener('DOMContentLoaded', () => {
         Username: "You", // Default username for uploaded content
         Discription: textArea.value
       });
+
+      localStorage.setItem('mainFeedPage', JSON.stringify(mainFeedPage));
       
       // Re-render the feed to show the new post
       renderFeed();
