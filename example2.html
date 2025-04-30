@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="file" name="image" id="image" accept="image/*">
+    <button class="upload-image">Upload Image</button>
+    <div class="display"></div>
+
+    <script>
+        const myArray = [];
+
+        const loadImage = document.querySelector('#image');
+        const uploadImageButton = document.querySelector('.upload-image');
+        const display = document.querySelector('.display');
+
+        uploadImageButton.addEventListener('click', () => {
+            const file = loadImage.files;
+
+            if(file.length === 0){
+                alert("Empty please select at least one image!");
+                return;
+            }
+
+            Array.from(file).forEach(files => {
+                const reader = new FileReader();
+
+                reader.onload = (e) => {
+                    const imageObject = {
+                        name: files.name,
+                        type: files.type,
+                        size: files.size,
+                        dataUrl: e.target.result,
+                        id: Date.now()
+                    };
+
+                    myArray.push(imageObject);
+                    displayImage(imageObject);
+                }
+                reader.readAsDataURL(files);
+            });
+            loadImage.value = '';
+        });
+        
+        function displayImage(imageObject){
+            const imageContainer = document.createElement('div');
+            imageContainer.className = 'image-container';
+            imageContainer.dataset.imageId = imageObject.id;
+
+            const imageElement = document.createElement('img');
+            imageElement.src = imageObject.dataUrl;
+            imageElement.alt = imageObject.name;
+
+            const buttonElement = document.createElement('Button');
+            buttonElement.textContent = 'Delete';
+            buttonElement.addEventListener('click', () => {
+                const index = myArray.findIndex(img => img.id === imageObject.id);
+                if(index !== 1){
+                    myArray.splice(index, 1);
+                }
+
+                imageContainer.remove();
+            });
+
+
+            imageContainer.appendChild(imageElement);
+            imageContainer.appendChild(buttonElement);
+            display.appendChild(imageContainer);
+        }
+
+
+
+    </script>
+</body>
+</html>

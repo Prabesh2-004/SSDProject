@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
-    <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="home.css?v=1.0">
     <!-- <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script> -->
 </head>
 <body>
-    <sidebar>
+    <aside>
         <div class="sidebar-container">
             <div class="logo">
                 <h1>Delta</h1>
@@ -27,7 +27,7 @@
                 <li><a href="#"><i class="fas fa-cog"></i> Setting</a></li>
             </div>
         </div>
-    </sidebar>
+    </aside>
     <main>
         <div class="body-container">
             <!-- Main Feed -->
@@ -41,10 +41,19 @@
                     <div>
                         <div class="slider-1"></div>
                     </div>
-                    <button class="upload-button">Upload <img src="icons/add_circle_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.png" alt=""></button>
+                    
+                    <label for="load-image" class="load-button">Upload <img src="icons/add_circle_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.png" alt=""></label>
+                    <input type="file" name="load-image" id="load-image" accept="image/*" style="display: none;">
                 </div>
+
                 <div class="uploading-details">
-                    <input type="file" name="image" id="image" accept="image/*">
+                    <h4>Your Image: </h4>
+                    <div class="image-preview">
+                        <!-- Uploaded images will appear here -->
+                    </div>
+                    <div class="discription">
+                        <h4>Description: </h4>
+                    </div>
                 </div>
             </div>
         </div>

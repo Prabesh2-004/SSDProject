@@ -41,33 +41,118 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        #image-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.image-container {
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 5px;
+  max-width: 200px;
+}
+
+.image-container img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin-bottom: 5px;
+}
+    </style>
   </head>
   <body>
-    <input type="file" name="image" id="image" accept="image/*">
-    <img src="#" alt="" class="preview">
+    <input type="file" id="image-upload" accept="image/*" multiple>
+<button id="upload-btn">Upload Images</button>
+<div id="image-gallery"></div>
 
-    
+
     <script>
-        const fileupload = document.querySelector('#image');
-        const button = document.querySelector('button');
-        const preview = document.querySelector('.preview');
+        // Array to store all uploaded images
+const uploadedImages = [];
 
-            const fileUploaded = fileupload.value;
-            fileupload.addEventListener('change', function(e) {
-                const fileName = e.target.files[0];
+// DOM elements
+const imageUpload = document.getElementById('image-upload');
+const uploadBtn = document.getElementById('upload-btn');
+const imageGallery = document.getElementById('image-gallery');
 
-                if(fileName){
-                    const reader = new FileReader();
+// Handle image upload
+uploadBtn.addEventListener('click', () => {
+  const files = imageUpload.files;
+  
+  if (files.length === 0) {
+    alert('Please select at least one image');
+    return;
+  }
 
-                    reader.onload = function(event){
-                        preview.src = event.target.result;
-                        preview.style.display = 'block';
-                    }
-                    reader.readAsDataURL(fileName)
-                }
-                console.log(fileName);
+  // Process each file
+  Array.from(files).forEach(file => {
+    const reader = new FileReader();
+    
+    reader.onload = (e) => {
+      // Create image object with metadata and data URL
+      const imageObj = {
+        name: file.name,
+        type: file.type,
+        size: file.size,
+        lastModified: file.lastModified,
+        dataUrl: e.target.result,
+        id: Date.now() // Unique ID for each image
+      };
+      
+      // Store in array
+      uploadedImages.push(imageObj);
+      
+      // Display on page
+      displayImage(imageObj);
+    };
+    
+    reader.readAsDataURL(file); // Convert to base64 data URL
+  });
+  
+  // Clear file input
+  imageUpload.value = '';
+});
 
-            });
+// Display image on the page
+function displayImage(imageObj) {
+  const imgContainer = document.createElement('div');
+  imgContainer.className = 'image-container';
+  imgContainer.dataset.imageId = imageObj.id;
+
+  const imgElement = document.createElement('img');
+  imgElement.src = imageObj.dataUrl;
+  imgElement.alt = imageObj.name;
+
+  const deleteBtn = document.createElement('button');
+  deleteBtn.textContent = 'Delete';
+  deleteBtn.addEventListener('click', () => {
+    // Remove from array
+    const index = uploadedImages.findIndex(img => img.id === imageObj.id);
+    if (index !== -1) {
+      uploadedImages.splice(index, 1);
+    }
+    // Remove from DOM
+    imgContainer.remove();
+  });
+
+  imgContainer.appendChild(imgElement);
+  imgContainer.appendChild(deleteBtn);
+  imageGallery.appendChild(imgContainer);
+}
+
+// Example of reusing stored images
+function useImageFromArray(imageId) {
+  const image = uploadedImages.find(img => img.id === imageId);
+  if (image) {
+    // Do something with the image
+    console.log('Reusing image:', image.name);
+    // You could create new elements with this image, etc.
+  }
+}
     </script>
   </body>
   </html>
