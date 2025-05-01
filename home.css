@@ -173,15 +173,15 @@ body {
     border-radius: 12px;
 }
 .uploading-section{
-    flex: 0; /* Suggestion box takes up less space */
+    flex: 0;
     background-color: #fff;
     border: 1px solid #dbdbdb;
     border-radius: 12px;
     padding: 20px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    height: fit-content; /* Adjust height to fit content */
-    position: sticky; /* Keep it fixed while scrolling */
-    top: 20px; /* Add spacing from the top */
+    height: fit-content;
+    position: sticky;
+    top: 20px;
 }
 
 .image-preview{
@@ -205,4 +205,63 @@ body {
 
 .upload-button:hover {
     background-color: #0056b3;
+}
+
+/* .uploading-details{
+    display: none;
+} */
+
+.see-more details summary{
+    list-style: none;
+    width: max-content;
+    padding: 5px 10px;
+    border-radius: 10px;
+    cursor: pointer;
+
+    &:hover{
+        background-color: rgb(237, 237, 237);
+    }
+}
+
+.see-more details{
+    position: relative;
+}
+
+.see-more details ul{
+    position: absolute;
+    bottom: unset;
+    left: 50%;
+    z-index: 99;
+    background-color: white;
+    border: 1px solid gray;
+    list-style: none;
+    padding: 10px;
+    border-radius: 7px;
+}
+
+.see-more details ul li{
+    width: 160px;
+    border-radius: 5px;
+    color: black;
+    cursor: pointer;
+    display: grid;
+    grid-template-rows: 40px;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    padding: 0 10px;
+    text-align: left;
+    transition: 0.5s;
+
+    &:hover{
+        background-color: #eaeaea;
+    }
+}
+
+.see-more details ul li button{
+    background-color: transparent;
+    border: none;
+    font-size: large;
+    font-weight: 0;
+    width: inherit;
 }

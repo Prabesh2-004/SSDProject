@@ -222,12 +222,29 @@ let mainFeedPage = JSON.parse (localStorage.getItem('mainFeedPage')) || [{
 // Function to render feed content
 function renderFeed() {
   let feedsPage = '';
-  mainFeedPage.forEach((feed) => {
+  mainFeedPage.forEach((feed,index) => {
     feedsPage += `
       <div class="main-section">
         <div class="userid-more">
             <h2 class="uploaded-username">${feed.Username}</h2>
-            <img src="icons/more_horiz_24dp_000000_FILL0_wght400_GRAD0_opsz24.png" alt="">
+            <div class="see-more">
+              <details>
+                <summary>
+                  <img src="icons/more_horiz_24dp_000000_FILL0_wght400_GRAD0_opsz24.png" alt="">
+                </summary>
+                <ul class="lists-more">
+                <li>
+                  Add to Favorite
+                </li>
+                <li class="delete-feed">
+                  <button onclick="deleteFeed(${index})">Delete</button>
+                </li>
+                <li>
+                  Report
+                </li>
+              </ul>
+              </details>
+            </div>
         </div>
         <div class="image-container">
             <img src="${feed.imageName}">
@@ -266,11 +283,13 @@ function renderFeed() {
 function setupBookmarkListeners() {
   const bookmarks = document.querySelectorAll('.bookmark');
   const bookmarkedJs = document.querySelectorAll('.bookmarked-js');
+  const savedContent = document.querySelector('.saved-content');
 
   bookmarks.forEach((bookmark, index) => {
     bookmark.addEventListener('click', () => {
       // Hide the clicked bookmark
       bookmark.style.display = 'none';
+      mainFeedPage.push();
       
       // Show the corresponding bookmarked-js element
       if (bookmarkedJs[index]) {
@@ -348,6 +367,8 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   function displayImage(imageObject) {
+
+
     // Clear previous content
     imagePreview.innerHTML = '';
     
@@ -381,6 +402,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Append the textarea and button to the uploading details section
     const uploadingDetails = document.querySelector('.uploading-details');
+    uploadButton.style.display = 'flex';
     if (uploadingDetails) {
       // Clear previous content
       const existingTextarea = uploadingDetails.querySelector('textarea');
@@ -422,3 +444,68 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
+
+function deleteFeed(index){
+  mainFeedPage.splice(index, 1);
+  localStorage.setItem('mainFeedPage', JSON.stringify(mainFeedPage));
+  renderFeed();
+
+  setupBookmarkListeners();
+  setupLikeListeners();
+}
+
+// Function to set up bookmark listeners
+function setupBookmarkListeners() {
+  const bookmarks = document.querySelectorAll('.bookmark');
+  const bookmarkedJs = document.querySelectorAll('.bookmarked-js');
+
+  bookmarks.forEach((bookmark, index) => {
+    bookmark.addEventListener('click', () => {
+      // Hide the clicked bookmark
+      bookmark.style.display = 'none';
+      
+      // Show the corresponding bookmarked-js element
+      if (bookmarkedJs[index]) {
+        bookmarkedJs[index].style.display = 'flex';
+      }
+      
+      // Save the content to savedContent in localStorage
+      const feedItem = mainFeedPage[index];
+      const savedContent = JSON.parse(localStorage.getItem('savedContent')) || [];
+      
+      // Check if this item is already saved
+      const alreadySaved = savedContent.some(item => 
+        item.imageName === feedItem.imageName && 
+        item.Username === feedItem.Username
+      );
+      
+      // Only add if not already saved
+      if (!alreadySaved) {
+        savedContent.push(feedItem);
+        localStorage.setItem('savedContent', JSON.stringify(savedContent));
+      }
+    });
+  });
+
+  bookmarkedJs.forEach((bookmarked, index) => {
+    bookmarked.addEventListener('click', () => {
+      bookmarked.style.display = 'none';
+      
+      if(bookmarks[index]) {
+        bookmarks[index].style.display = 'flex';
+      }
+      
+      // Remove the content from savedContent in localStorage
+      const feedItem = mainFeedPage[index];
+      const savedContent = JSON.parse(localStorage.getItem('savedContent')) || [];
+      
+      // Filter out the item to be removed
+      const updatedSavedContent = savedContent.filter(item => 
+        item.imageName !== feedItem.imageName || 
+        item.Username !== feedItem.Username
+      );
+      
+      localStorage.setItem('savedContent', JSON.stringify(updatedSavedContent));
+    });
+  });
+}

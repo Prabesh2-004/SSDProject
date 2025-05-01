@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saved Content</title>
+    <!-- Import Font Awesome using CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        
+        body {
+            background-color: #fafafa;
+            padding: 20px;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background-color: white;
+            border-bottom: 1px solid #dbdbdb;
+            margin-bottom: 20px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header h1 {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        .back-button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            color: #262626;
+        }
+        
+        .no-content {
+            text-align: center;
+            padding: 100px 20px;
+            color: #8e8e8e;
+        }
+        
+        .no-content i {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: #dbdbdb;
+        }
+        
+        .no-content h2 {
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+        
+        .no-content p {
+            font-size: 14px;
+        }
+        
+        .saved-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .saved-item {
+            background-color: white;
+            border: 1px solid #dbdbdb;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+        }
+        
+        .saved-item .image-container {
+            width: 100%;
+            height: 300px;
+            overflow: hidden;
+        }
+        
+        .saved-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .saved-item .content {
+            padding: 12px;
+        }
+        
+        .saved-item .username {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .saved-item .description {
+            font-size: 14px;
+            color: #262626;
+            margin-bottom: 10px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            /* -webkit-line-clamp: 2; */
+            -webkit-box-orient: vertical;
+        }
+        
+        .saved-item .actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+        
+        .saved-item .actions button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #262626;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .saved-item .actions button i {
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <button class="back-button" onclick="goToFeed()">
+            <i class="fas fa-arrow-left"></i>
+        </button>
+        <h1>Saved Content</h1>
+        <div></div> <!-- Empty div for flex spacing -->
+    </div>
+    
+    <div class="saved-container">
+        <!-- Content will be inserted here by JavaScript -->
+    </div>
+    
+    <script>
+        // Function to go back to the main feed
+        function goToFeed() {
+            window.location.href = 'home.html'; // Change this to your main feed page
+        }
+        
+        // Function to remove item from saved content
+        function removeFromSaved(index) {
+            const savedItems = JSON.parse(localStorage.getItem('savedContent')) || [];
+            savedItems.splice(index, 1);
+            localStorage.setItem('savedContent', JSON.stringify(savedItems));
+            renderSavedContent();
+        }
+        
+        // Function to render saved content
+        function renderSavedContent() {
+            const savedContainer = document.querySelector('.saved-container');
+            const savedItems = JSON.parse(localStorage.getItem('savedContent')) || [];
+            
+            if (savedItems.length === 0) {
+                savedContainer.innerHTML = `
+                    <div class="no-content">
+                        <i class="far fa-bookmark"></i>
+                        <h2>No Saved Items</h2>
+                        <p>Items you save will appear here.</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            let savedHTML = '<div class="saved-content">';
+            savedItems.forEach((item, index) => {
+                savedHTML += `
+                    <div class="saved-item">
+                        <div class="image-container">
+                            <img src="${item.imageName}" alt="${item.Username}'s post">
+                        </div>
+                        <div class="content">
+                            <div class="username">${item.Username}</div>
+                            <div class="description">${item.Discription}</div>
+                            <div class="actions">
+                                <button>
+                                    <i class="far fa-heart"></i> Like
+                                </button>
+                                <button onclick="removeFromSaved(${index})">
+                                    <i class="fas fa-bookmark"></i> Unsave
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+            savedHTML += '</div>';
+            
+            savedContainer.innerHTML = savedHTML;
+        }
+        
+        // Execute on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            renderSavedContent();
+        });
+    </script>
+</body>
+</html>

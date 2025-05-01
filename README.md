@@ -1,2 +1,0 @@
-# SSDProject
-# BANKAI
