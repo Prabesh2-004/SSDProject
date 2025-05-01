@@ -85,6 +85,7 @@ body {
     background-color: gray;
     border-radius: 10px;
     width: 100%;
+    display: none;
 }
 .link-container li a,
 .more li a {
@@ -264,4 +265,46 @@ body {
     font-size: large;
     font-weight: 0;
     width: inherit;
+}
+
+.slider-1 a{
+    color: white;
+    text-decoration: none ;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: 10px;
+    
+}
+.slider-2{
+    height: 50px;
+    background-color: gray;
+    border-radius: 10px;
+    width: 100%;
+    display: flex;
+}
+.slider-2 a{
+    color: white;
+    text-decoration: none ;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: 10px;
+    
+}
+.slider-3{
+    height: 50px;
+    background-color: gray;
+    border-radius: 10px;
+    width: 100%;
+    display: flex;
+}
+.slider-3 a{
+    color: white;
+    text-decoration: none ;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: 10px;
+    
 }
