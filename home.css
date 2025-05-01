@@ -275,36 +275,4 @@ body {
     gap: 10px;
     margin-left: 10px;
     
-}
-.slider-2{
-    height: 50px;
-    background-color: gray;
-    border-radius: 10px;
-    width: 100%;
-    display: flex;
-}
-.slider-2 a{
-    color: white;
-    text-decoration: none ;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-left: 10px;
-    
-}
-.slider-3{
-    height: 50px;
-    background-color: gray;
-    border-radius: 10px;
-    width: 100%;
-    display: flex;
-}
-.slider-3 a{
-    color: white;
-    text-decoration: none ;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-left: 10px;
-    
-}
+} 
