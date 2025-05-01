@@ -508,4 +508,22 @@ function setupBookmarkListeners() {
       localStorage.setItem('savedContent', JSON.stringify(updatedSavedContent));
     });
   });
+};
+
+let mySlider = 0;
+slider()
+
+function slider(){
+  const sliders = document.querySelectorAll('.slider-1');
+  for(let i=0;i<sliders.length;i++){
+    sliders[i].style.display = 'none';
+  }
+  mySlider++;
+  if(mySlider > sliders.length){
+    mySlider = 1;
+  }
+  sliders[mySlider-1].style.display = 'flex';
+  setTimeout(() => {
+    slider();
+  }, 5000);
 }
