@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Head content unchanged -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* CSS unchanged */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            font-family: poppins,'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .container-signup{
+            display: grid;
+            height: 100vh;
+            grid-template-columns: 1fr 1.5fr;
+        }
+        .container-signin{
+            display: none;
+            height: 100vh;
+            grid-template-columns: 1.5fr 1fr;
+        }
+        .container-signup, .container-signin {
+            transition: all 0.3s ease-in-out;
+        }
+        .image-container{
+            background-image: url(img/signUp.svg);
+            background-repeat: no-repeat;
+            background-size: auto;
+            background-position: 10px;
+            background-color: rgb(0, 177, 94);
+            display: flex;
+            color: white;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .container-signin.active {
+            transform: translateX(0);
+            opacity: 1;
+        }
+
+        .container-signup.inactive {
+            transform: translateX(-100%);
+            opacity: 0;
+        }
+        .image-container .heading{
+            cursor: pointer;
+            margin: 10px;
+        }
+        .image-container .discription{
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .signin-button-signup{
+            padding: 15px;
+            border: 1px solid white;
+            margin-bottom: 5px;
+            width: 200px;
+            cursor: pointer;
+            background-color: #80ed99;
+            border-radius: 10px;
+            color: white;
+            font-weight: bold;
+
+            &:hover{
+                background-color: rgb(0, 177, 94);
+            }
+        }
+        .signup-button-signin{
+            padding: 15px;
+            border: 1px solid white;
+            margin-bottom: 5px;
+            width: 200px;
+            cursor: pointer;
+            background-color: #80ed99;
+            border-radius: 10px;
+            color: white;
+            font-weight: bold;
+
+            &:hover{
+                background-color: rgb(0, 177, 94);
+            }
+        }
+        .signup-form{
+            color: rgb(255, 255, 255);
+            background-color: rgb(39, 37, 37);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .signup-form h2{
+            color: rgb(0, 177, 94);
+        }
+        .input-details input{
+            width: 100%;
+            padding: 0.75rem 1rem;
+            font-size: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            margin: 5px 0 5px 0;
+            transition: all 0.3s ease;
+            box-sizing: border-box;
+        }
+        .input-details input:focus{
+            outline: none;
+            border-color: #005f73;
+            box-shadow: 0 0 0 3px #005f73;
+        }
+        .signin-button{
+            padding: 15px;
+            border: 1px solid white;
+            margin-top: 10px;
+            margin-bottom: 20px;
+            width: 100px;
+            cursor: pointer;
+            background-color: #80ed99;
+            border-radius: 10px;
+            color: white;
+            font-weight: bold;
+
+            &:hover{
+                background-color: rgb(27, 201, 120);
+            }
+        }
+        .signup-button{
+            padding: 15px;
+            border: 1px solid white;
+            margin-top: 10px;
+            margin-bottom: 20px;
+            width: 100px;
+            cursor: pointer;
+            background-color: #80ed99;
+            border-radius: 10px;
+            color: white;
+            font-weight: bold;
+
+            &:hover{
+                background-color: rgb(27, 201, 120);
+            }
+        }
+        .input-form-section{
+            display: flex;
+            flex-direction: column;
+            
+        }
+        .checkbox-terms{
+            margin: 8px 0 8px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .another-signup{
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .another-signup button{
+            padding: 10px;
+            border-radius: 50px;
+            border: none;
+            margin-right: 20px;
+            cursor: pointer;
+        }
+        .another-signup button i{
+            font-size: x-large;
+        }
+        .password-show{
+            margin: 8px 0 8px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .password-show input{
+            width: 20px;
+        }
+        .password-show input:focus{
+            outline: none;
+            border-color: none;
+            box-shadow: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-signup">
+        <div class="image-container">
+            <div class="heading">
+            <h1>Delta</h1>
+            </div>
+            <div class="discription">
+                <button class="signin-button-signup">Sign In</button>
+                <p>© this image belong to -> <a href="https://0xabdulkhaliq.github.io/basket-sign-up/" style="text-decoration: none; color: white;">
+                    Abdul Khaliq | 0xabdulkhaliq</a></p>
+            </div>
+        </div>
+        <div class="signup-form">
+            <form id="signup-form" method="post">
+                <h2>Get Started</h2>
+                <div class="input-form-section">
+                    <div class="input-details">
+                        <label for="username">Username: </label>
+                        <input type="text" name="username" id="username" placeholder="Enter Your Username" autofocus required aria-describedby="username-help">
+                        <small id="username-help" style="color: red;display: none;">Field is empty please fill out the field</small>
+                    </div>
+                    <div class="input-details">
+                        <label for="email">Email: </label>
+                        <input type="email" name="email" id="email" placeholder="example123@example.com" required aria-describedby="email-help">
+                        <small id="email-help" style="color: red;display: none;">Field is empty please fill out the field</small>
+                    </div>
+                    <div class="input-details">
+                        <label for="password">Password: </label>
+                        <input type="password" name="password" id="password" required aria-describedby="password-help">
+                        <small id="password-help" style="color: red;display: none;">Field is empty please fill out the field</small>
+                        <div class="password-show">
+                            <input type="checkbox" id="passwordcheck" onclick="showpassword()">
+                            <label for="passwordcheck">Show Password</label>
+                        </div>
+                    </div>
+                    <div class="checkbox-terms">
+                        <input type="checkbox" name="checkbox" id="checkbox">
+                        <label for="checkbox">I Agree to all statement in <a href="#" style="text-decoration: none;">term and services</a></label>
+                    </div>
+                    <button type="submit" class="signup-button">Sign Up</button>
+                </div>
+                <div>------------------ OR  ------------------------</div>
+                <div class="another-signup">
+                    <button type="button"><i class="fa-brands fa-google"></i></button>
+                    <button type="button"><i class="fa-brands fa-github"></i></button>
+                    <button type="button"><i class="fa-brands fa-linkedin"></i></button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="container-signin">
+        <div class="signup-form">
+            <form id="signin-form" method="post">
+                <h2>WelCome Back</h2>
+                <div class="input-form-section">
+                    <div class="input-details">
+                        <label for="signin-email">Email: </label>
+                        <input type="email" name="email" id="signin-email" placeholder="example123@example.com" required>
+                    </div>
+                    <div class="input-details">
+                        <label for="signin-password">Password: </label>
+                        <input type="password" name="password" id="signin-password" required>
+                        <div class="password-show">
+                            <input type="checkbox" id="signin-passwordcheck" onclick="signinshowpassword()">
+                            <label for="signin-passwordcheck">Show Password</label>
+                        </div>
+                    </div>
+                    <button type="submit" class="signin-button">Sign In</button>
+                </div>
+                <div>------------------ OR  ------------------------</div>
+                <div class="another-signup">
+                    <button type="button"><i class="fa-brands fa-google"></i></button>
+                    <button type="button"><i class="fa-brands fa-github"></i></button>
+                    <button type="button"><i class="fa-brands fa-linkedin"></i></button>
+                </div>
+            </form>
+        </div>
+        <div class="image-container">
+            <div class="heading">
+            <h1>Delta</h1>
+            </div>
+            <div class="discription">
+                <button class="signup-button-signin">Sign Up</button>
+                <p>© this image belong to -><a href="https://0xabdulkhaliq.github.io/basket-sign-up/" style="text-decoration: none; color: white;">
+                    Abdul Khaliq | 0xabdulkhaliq</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const passwordSigninShow = document.querySelector('#signin-password');
+        const passwordShow = document.querySelector('#password');
+        function showpassword(){
+            if(passwordShow.type === 'password'){
+                passwordShow.type = 'text';
+            }
+            else{
+                passwordShow.type = 'password'
+            }
+        }
+        function signinshowpassword(){
+            if(passwordSigninShow.type === 'password'){
+                passwordSigninShow.type = 'text';
+            }
+            else{
+                passwordSigninShow.type = 'password'
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const signinButton = document.querySelector('.signin-button-signup');
+            const signupButton = document.querySelector('.signup-button-signin');
+            const containerSignup = document.querySelector('.container-signup');
+            const containerSignin = document.querySelector('.container-signin');
+
+            signinButton.addEventListener('click', () => {
+                containerSignin.style.display = 'grid';
+                containerSignup.style.display = 'none';
+                
+            });
+            signupButton.addEventListener('click', () => {
+                containerSignup.style.display = 'grid';
+                containerSignin.style.display = 'none';
+            });
+
+            // Get form elements
+            const signupForm = document.getElementById('signup-form');
+            const signinForm = document.getElementById('signin-form');
+            
+            const signupUsername = document.getElementById('username');
+            const signupEmail = document.getElementById('email');
+            const signupPassword = document.getElementById('password');
+            
+            const signinEmail = document.getElementById('signin-email');
+            const signinPassword = document.getElementById('signin-password');
+            
+            const usernameAlert = document.getElementById('username-help');
+            const emailAlert = document.getElementById('email-help');
+            const passwordAlert = document.getElementById('password-help');
+            
+            // Initialize storage
+            const savingUserData = JSON.parse(localStorage.getItem('savingUserData')) || [];
+
+            // Handle signup form submission
+            signupForm.addEventListener('submit', (e) => {
+                e.preventDefault(); // Prevent form submission
+                
+                const signupUsernameValue = signupUsername.value.trim();
+                const signupEmailvalue = signupEmail.value.trim();
+                const signupPasswordValue = signupPassword.value.trim();
+
+                // Validate fields
+                let isValid = true;
+                
+                if(signupUsernameValue === ''){
+                    usernameAlert.style.display = 'block';
+                    isValid = false;
+                } else {
+                    usernameAlert.style.display = 'none';
+                }
+                
+                if(signupEmailvalue === ''){
+                    emailAlert.style.display = 'block';
+                    isValid = false;
+                } else {
+                    emailAlert.style.display = 'none';
+                }
+                
+                if(signupPasswordValue === ''){
+                    passwordAlert.style.display = 'block';
+                    isValid = false;
+                } else {
+                    passwordAlert.style.display = 'none';
+                }
+
+                if(!isValid) return;
+
+                // Check if email already exists
+                const registeredEmail = savingUserData.some(user => user.Email === signupEmailvalue);
+                if(registeredEmail){
+                    alert('Email Already Exists');
+                    return;
+                }
+
+                // Save user data
+                savingUserData.push({
+                    Username: signupUsernameValue,
+                    Email: signupEmailvalue,
+                    Password: signupPasswordValue,
+                });
+                localStorage.setItem('savingUserData', JSON.stringify(savingUserData));
+
+                // Clear form
+                signupUsername.value = '';
+                signupPassword.value = '';
+                signupEmail.value = '';
+                
+                alert('Account created successfully! Please sign in.');
+                
+                // Switch to sign in form
+                containerSignin.style.display = 'grid';
+                containerSignup.style.display = 'none';
+            });
+
+            // Handle signin form submission
+            signinForm.addEventListener('submit', (e) => {
+                e.preventDefault(); // Prevent form submission
+                
+                const signinEmailvalue = signinEmail.value.trim().toLowerCase();
+                const signinPasswordValue = signinPassword.value.trim();
+
+                // Validate credentials
+                const validUserData = savingUserData.some(user => 
+                    user.Email.toLowerCase() === signinEmailvalue && 
+                    user.Password === signinPasswordValue
+                );
+
+                if(validUserData){
+                    console.log("Login successful, redirecting to home.html");
+                    window.location.href = "home.html";
+                } else {
+                    alert("Email or password is incorrect");
+                }
+            });
+        });
+    </script>
+</body>
+</html>
