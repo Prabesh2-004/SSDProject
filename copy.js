@@ -55,13 +55,13 @@ let mainFeedPage = JSON.parse (localStorage.getItem('mainFeedPage')) || [{
           </div>
           <div class="expression">
               <div>
-                  <img src="icons/favorite_24dp_000000_FILL0_wght400_GRAD0_opsz24.png" alt="" class="like-btn"> 
-                  <img src="icons/comment_24dp_000000_FILL0_wght400_GRAD0_opsz24.png" alt="">
-                  <img src="icons/send_24dp_000000_FILL0_wght400_GRAD0_opsz24.png" alt="">
+                  <img src="icons/favorite_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.png" alt="" class="like-btn"> 
+                  <img src="icons/chat_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.png" alt="">
+                  <img src="icons/send_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.png" alt="">
               </div>
               <div class="bookmark-slot">
-                  <img src="icons/bookmark_24dp_000000_FILL0_wght400_GRAD0_opsz24.png" alt="" class="bookmark">
-                  <img src="icons/bookmarks_24dp_000000_FILL0_wght400_GRAD0_opsz24.png" alt="" class="bookmarked-js" style="display: none;">
+                  <img src="icons/bookmark_24dp_EFEFEF_FILL0_wght400_GRAD0_opsz24.png" alt="" class="bookmark">
+                  <img src="icons/bookmarks_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.png" alt="" class="bookmarked-js" style="display: none;">
               </div>
           </div>
           <div class="like-count">
