@@ -44,7 +44,7 @@ function renderFeed() {
                   <button onclick="deleteFeed(${index})">Delete</button>
                 </li>
                 <li>
-                  Report
+                  Edit
                 </li>
               </ul>
               </details>
