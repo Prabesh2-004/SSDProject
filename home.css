@@ -11,7 +11,6 @@ body {
     background-color: #fafafa;
     color: #262626;
 }
-
 .sidebar-container {
     display: flex;
     flex-direction: column;
@@ -129,12 +128,15 @@ body {
     margin-top: 15px;
 }
 .slider-1{
-    height: 50px;
+    height: 200px;
     background-color: gray;
     border-radius: 10px;
     width: 100%;
     display: none;
 }
+.slider-1 img{
+    border-radius: 10px;
+} 
 .link-container li a,
 .more li a {
     text-decoration: none;
@@ -159,6 +161,17 @@ body {
     display: flex;
     flex-direction: column; /* Stack feed items vertically */
     gap: 20px; /* Add spacing between feed items */
+}
+.body-slide-show{
+    width: 100%; /* Ensure full width for each feed item */
+    background-color: #fff;
+    border: 1px solid #dbdbdb;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column; /* Stack content vertically inside each section */
+    align-items: center;
 }
 
 .main-section {
@@ -314,13 +327,3 @@ body {
     font-weight: 0;
     width: inherit;
 }
-
-.slider-1 a{
-    color: white;
-    text-decoration: none ;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-left: 10px;
-    
-} 
